@@ -1,0 +1,20 @@
+# Competition data. Never commit: redistributing it to anyone who has not
+# accepted the rules is a rules violation.
+# NOTE: .gitignore has no inline comments - a "#" mid-line becomes part of the
+# pattern and silently matches nothing. Keep every comment on its own line.
+data/
+logs/
+# holds the 58 gold labels; rebuild with scripts/make_weak_labels.py
+artifacts/weak_labels.csv
+
+# Large or generated
+*.npz
+*.npy
+feat/
+*.zip
+
+# Python and OS
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
