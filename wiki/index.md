@@ -15,7 +15,8 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 
 - [competition](entities/competition.md) - RSNA Knee Abnormality Detection on Kaggle: 12 binary findings per knee MRI, macro AUC, 9-hour inference limit, final submission 2026-10-22.
 - [compute](entities/compute.md) - 2x Kaggle T4 (15 GiB each, no native bf16) at 30 GPU-hours a week is enough to train: a 5-fold 224 px experiment is ~6.5 h.
-- [dataset](entities/dataset.md) - Only 58 of 4,407 training studies carry labels, all twelve or none.
+- [dataset](entities/dataset.md) - Only 58 of 4,407 training studies carry labels; the rest have a radiology report, five-ish MRI series, and nothing else.
+- [dicom-headers](entities/dicom-headers.md) - Rich acquisition metadata survives - echo time, scan options, series description, laterality, scanner model - which means the true contrast of every s
 - [host](entities/host.md) - The host (Po-Hao "Howard" Chen, RSNA) has ruled commercial LLM APIs permitted for label extraction and confirmed report-image disagreement is delibera
 - [model-families](entities/model-families.md) - The public pack is three families - a DINOv3 slot model, a CoAtNet Raptor model, and a RadImageNet ResNet - all fine-tuned by other competitors and sh
 - [notebook-0939](entities/notebook-0939.md) **[superseded]** - The previous baseline, superseded by notebook-0943, and the notebook where 20 defects were found by executing it.

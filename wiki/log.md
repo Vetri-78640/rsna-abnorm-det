@@ -101,3 +101,19 @@ same commit, now enforced by CI.
 The first four commits carried a Claude-Session trailer. Rewrote main with a
 message-only filter and force-pushed with lease. Trees verified byte-identical before
 and after. Local backup tag: backup-before-trailer-strip.
+
+## [2026-09-22] measure | full CSV audit
+Every gold study has >=1 positive (mean 4.14). UIDs regenerated under pydicom's
+root, no train/test overlap. Axial non-FS missing in 80.6% of studies; only 12.8%
+have all six slots; 13.6% of slots offer several series. Reports effectively
+non-contrast (~4 of 4,407 used gadolinium); strong per-site templates.
+
+## [2026-09-22] measure | DICOM headers, one test study
+62 tags survive, including Laterality, EchoTime, ScanOptions, SeriesDescription,
+PatientID. Confirmed: a T2 TSE (TE 91, no fat-sat) is labelled fluid=0 by the
+organisers - the flag tracks fat suppression, not fluid sensitivity.
+
+## [2026-09-22] build | header census notebook, file inventory crawler
+notebooks/header_census.ipynb reads one header per series for all 24,371 series,
+CPU only; dry-run on the real sample. scripts/crawl_file_inventory.py lists all
+819,640 files for slices per series; running.

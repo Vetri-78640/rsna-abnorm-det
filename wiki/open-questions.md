@@ -18,6 +18,9 @@ Close a question by moving its answer onto the right page and deleting the row.
 | 4 | What did the pending 2026-09-22 submission score? | our baseline | `kaggle competitions submissions` |
 | 5 | Does a competition rerun spend the 30 h/week GPU quota? | how freely we can submit | watch the quota meter across one submission |
 | 6 | What is the layout of `extra_vols.npy`? | whether 3,030 or 2,200 studies skip decoding | load one row on Kaggle |
-| 7 | Which of the 86 DICOM tags survived? Can TE recover the fluid axis? | a slot every public solution misfiles | `scripts/audit_headers.py` on real DICOMs |
+| 7 | How many series does the fluid flag misfile? (one T2 confirmed so far) | a slot every public solution misfiles | `notebooks/header_census.ipynb`, CPU only |
+| 10 | Is `Laterality` present in every series? | whether laterality is simply solved | same census |
+| 11 | Does `PatientID` repeat across studies? | whether CV folds must group by patient | same census |
+| 12 | Slices per series across all 24,371 series? | stride and band design in `src/sampling.py` | `scripts/crawl_file_inventory.py`, running |
 | 8 | Are click-through research datasets allowed? | MRNet, OAI, fastMRI+ pretraining | host answer on the forum |
 | 9 | How much of the leaders' margin is public-LB overfit? | how we pick finals | only the private LB, after 2026-10-22 |
