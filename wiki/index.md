@@ -36,7 +36,7 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 - [D002-select-finals-by-cv](decisions/D002-select-finals-by-cv.md) - Decision: choose final submissions on our own cross-validation.
 - [D003-no-bigger-encoder](decisions/D003-no-bigger-encoder.md) - Decision: stay at ViT-S and the current backbones - two teams measured ViT-B as a null.
 - [D004-no-target-calibration](decisions/D004-no-target-calibration.md) - Decision: do not Platt-calibrate lexicon scores before training.
-- [D005-repo-visibility](decisions/D005-repo-visibility.md) **[open]** - Vetri-78640/rsna-abnorm-det was created PUBLIC on 2026-09-22.
+- [D005-repo-visibility](decisions/D005-repo-visibility.md) - Vetri-78640/rsna-abnorm-det was created PUBLIC on 2026-09-22.
 
 ## Experiments - what we ran
 
