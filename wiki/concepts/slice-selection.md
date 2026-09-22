@@ -18,6 +18,13 @@ fix paid **+0.0059 and moved 10 of 12 labels**. Compare encoder scaling: +0.0011
 - Narrow bands (0.2-0.8) discard the stack ends, where PF OA (patella), Baker's
   (popliteal fossa) and Effusion (suprapatellar pouch) live.
 
+## What the data allows
+
+[Certain] Axial non-fat-sat is missing in 80.6% of studies and coronal non-FS in
+22.7%; only 12.8% of studies have all six slots. And 13.6% of filled slots offer more
+than one series to choose from. So slice selection is also *series* selection, and
+it must degrade gracefully when a slot is empty. See [[dataset]].
+
 ## What we have
 
 `src/sampling.py`: per-label anatomical bands, stack ends never discarded,
