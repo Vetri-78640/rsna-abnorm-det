@@ -18,9 +18,10 @@ M2=$(ms "M2 sampling ablation"  2026-10-06 "The thesis test. Under +0.002 on our
 M3=$(ms "M3 labels and blend"   2026-10-13 "Best LLM key, synovitis fill, blend as a decorrelated member.")
 M4=$(ms "M4 final submissions"  2026-10-22 "Two finals chosen by CV, runtime verified under 9 h.")
 
+iss_skip() { :; }   # D005 already decided: repo stays public
 iss() { gh issue create --repo "$R" --milestone "$1" --label "$2" --title "$3" --body "$4" >/dev/null; echo "  + $3"; }
 
-iss "M1 control model" "decision,blocker" "Decide repo visibility" \
+iss_skip "M1 control model" "decision,blocker" "Decide repo visibility" \
 "Repo was created public. Recommendation: private until 2026-10-22. Competition data is gitignored either way, but a public repo hands src/sampling.py to every competitor. See wiki/decisions/D005-repo-visibility.md."
 
 iss "M1 control model" "experiment,blocker" "Get the encode-and-gate result" \
@@ -59,4 +60,4 @@ iss "M4 final submissions" "submission" "Runtime check: 0.943 plus our member un
 iss "M4 final submissions" "decision,submission" "Select the two finals by CV" \
 "Never by public LB. Leaders have 40-120 submissions and the top spread sits inside one SE. See wiki/decisions/D002-select-finals-by-cv.md."
 
-echo "done: 5 labels, 4 milestones, 13 issues"
+echo "done: 5 labels, 4 milestones, 12 issues"
