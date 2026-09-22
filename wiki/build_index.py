@@ -22,7 +22,9 @@ out = ["# Wiki index", "",
        "## Start here", "",
        "- [overview](overview.md) - current state, the thesis, and the next action",
        "- [log](log.md) - append-only history; check it before trusting any page",
-       "- [SCHEMA](SCHEMA.md) - how this wiki is maintained", ""]
+       "- [SCHEMA](SCHEMA.md) - how this wiki is maintained",
+       "- [glossary](glossary.md) - what arm, slot, key, gold, commit run and the rest mean here",
+       "- [open-questions](open-questions.md) - what we do not know yet, and what would settle it", ""]
 for head, d in SECTIONS:
     out += [f"## {head}", ""]
     for p in sorted((W / d).glob("*.md")):
@@ -30,12 +32,14 @@ for head, d in SECTIONS:
         tag = "" if status in ("current", "done") else f" **[{status}]**"
         out.append(f"- [{p.stem}]({d}/{p.name}){tag} - {first}")
     out.append("")
-out += ["## Long-form archive (not maintained)", "",
-        "`docs/` holds the original long-form record. Where it disagrees with the wiki,",
-        "**the wiki wins** - several `docs/` claims have since been corrected here.", "",
-        "- `docs/researched.md` - the 1,400-line research archive, four literature reviews",
-        "- `docs/FINDINGS.md` - 20 reproduced defects in the 0.939 notebook, full detail",
-        "- `docs/community.md` - forum threads transcribed verbatim",
-        "- `docs/STRATEGY.md`, `docs/PLAN.md` - the reasoning and schedule as of 2026-09-10", ""]
+out += ["## Raw sources - verbatim, external", "",
+        "- [forum](raw/forum.md) - Kaggle forum threads and host rulings, transcribed",
+        "- [research](raw/research.md) - four literature reviews from research agents, 1,400 lines", "",
+        "## Archive - our dated reasoning, frozen", "",
+        "Where these disagree with a page above, the page wins.", "",
+        "- [FINDINGS](archive/FINDINGS.md) - 20 reproduced defects in the 0.939 notebook, full detail",
+        "- [STRATEGY](archive/STRATEGY.md) - leaderboard arithmetic and lever ranking, 2026-09-10",
+        "- [PLAN](archive/PLAN.md) - the six-week schedule as of 2026-09-10",
+        "- [extras](archive/extras.md) - competition mechanics and rules, long form", ""]
 (W / "index.md").write_text("\n".join(out))
 print("wrote", W / "index.md")

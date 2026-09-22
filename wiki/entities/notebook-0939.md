@@ -2,14 +2,14 @@
 type: entity
 updated: 2026-09-22
 status: superseded
-sources: [docs/FINDINGS.md 1-20]
+sources: [wiki/archive/FINDINGS.md 1-20]
 ---
 
 # Notebook: Bend the Knee to the Dinosaurs (0.939) - previous baseline
 
 The previous baseline, superseded by [[notebook-0943]], and the notebook where 20
 defects were found by executing it. File:
-`bend-the-knee-to-the-dinosaurs-all-public.ipynb`. Full list: `docs/FINDINGS.md`.
+`bend-the-knee-to-the-dinosaurs-all-public.ipynb`. Full list: `wiki/archive/FINDINGS.md`.
 
 ## The defects that still matter
 

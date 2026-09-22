@@ -1,3 +1,6 @@
+> **Raw source.** Verbatim external material - forum transcriptions or research
+> agent output. Never edited to fix a claim; corrections go in the wiki pages.
+
 # What other teams and the host have established
 
 Sourced from the competition discussion forum, read 2026-09-10. These are

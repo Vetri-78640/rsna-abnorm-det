@@ -14,7 +14,7 @@ PF OA, Effusion, Synovitis, Baker's, Contusion, Fracture.
 prize money starts at 0.950. Public notebooks cap around 0.942, so we are at the
 public ceiling and the rest is private work.
 
-The plan and the reasoning behind it are in **`docs/STRATEGY.md`**. In short:
+The plan and the reasoning behind it are in **`wiki/archive/STRATEGY.md`**. In short:
 
 - The top-5 spread is 0.003, inside one standard error on this test set. The
   leaders have 42-119 submissions against our 3, so part of their margin is
@@ -77,7 +77,7 @@ scripts/
   audit_headers.py    tag survival, slice-normal signs, laterality, geometry
   budget_model.py     9h inference budget; --from-log calibrates on a real run
 tests/                52 tests, no data or GPU required
-docs/                 FINDINGS, researched, PLAN, extras, HANDOFF
+wiki/                 the knowledge base; start at wiki/overview.md
 ```
 
 ## Quick start

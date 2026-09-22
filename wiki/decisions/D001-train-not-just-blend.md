@@ -2,7 +2,7 @@
 type: decision
 updated: 2026-09-22
 status: current
-sources: [docs/STRATEGY.md]
+sources: [wiki/archive/STRATEGY.md]
 ---
 
 # D001 - Train our own model, then blend it in

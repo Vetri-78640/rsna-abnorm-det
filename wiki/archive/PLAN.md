@@ -1,7 +1,11 @@
+> **Archive, frozen 2026-09-10.** Dated long-form reasoning, kept as the record of
+> what was believed and when. Some claims here have since been corrected - the
+> maintained pages in `wiki/` win. Start at `wiki/overview.md`.
+
 # Plan
 
 Six weeks became **42 days** on 2026-09-10. The argument behind this schedule is
-in `STRATEGY.md`; the evidence behind it is in `community.md`. This file is only
+in `STRATEGY.md`; the evidence behind it is in `wiki/raw/forum.md`. This file is only
 the sequence.
 
 **What changed on 2026-09-10.** An earlier version of this plan said retraining
@@ -39,7 +43,7 @@ floor. See `FINDINGS.md` item 19.
 | Run `notebooks/RUN_THIS_encode_and_gate.ipynb` | gives the image-model-vs-teacher diagnostic on the gold 58 |
 
 Print which backbone actually loaded, every run. A silent fallback to ResNet-18
-trains fine and logs a plausible score; see `community.md`.
+trains fine and logs a plausible score; see `wiki/raw/forum.md`.
 
 Deliverable: a CV number, a measured noise floor, and a per-label table.
 

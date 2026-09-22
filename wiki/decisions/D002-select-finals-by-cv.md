@@ -2,7 +2,7 @@
 type: decision
 updated: 2026-09-22
 status: current
-sources: [docs/STRATEGY.md]
+sources: [wiki/archive/STRATEGY.md]
 ---
 
 # D002 - Select the two finals by CV, never by public LB

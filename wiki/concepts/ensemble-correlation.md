@@ -2,7 +2,7 @@
 type: concept
 updated: 2026-09-22
 status: current
-sources: [notebook source, docs/FINDINGS.md 10]
+sources: [notebook source, wiki/archive/FINDINGS.md 10]
 ---
 
 # Why one decorrelated member beats a 31st correlated one

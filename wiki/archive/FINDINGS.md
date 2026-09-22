@@ -1,3 +1,7 @@
+> **Archive, frozen 2026-09-10.** Dated long-form reasoning, kept as the record of
+> what was believed and when. Some claims here have since been corrected - the
+> maintained pages in `wiki/` win. Start at `wiki/overview.md`.
+
 # Verified defects in the public 0.939 notebook
 
 Every item here was reproduced by executing the notebook's own code, not inferred
@@ -544,5 +548,5 @@ Check that line on every submission before selecting it as a final.
 ## Community results and host rulings
 
 Not defects, so not here. What other teams measured, what the host has ruled, and
-the transcribed discussion threads live in **`community.md`**. The reasoning that
-turns all of it into a plan lives in **`STRATEGY.md`**.
+the transcribed discussion threads live in **`wiki/raw/forum.md`**. The reasoning that
+turns all of it into a plan lives in **`wiki/archive/STRATEGY.md`**.

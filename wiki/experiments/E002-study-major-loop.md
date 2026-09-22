@@ -2,7 +2,7 @@
 type: experiment
 updated: 2026-09-22
 status: done
-sources: [docs/FINDINGS.md 13, harness]
+sources: [wiki/archive/FINDINGS.md 13, harness]
 ---
 
 # E002 - Study-major inference loop

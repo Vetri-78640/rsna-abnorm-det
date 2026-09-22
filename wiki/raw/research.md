@@ -1,3 +1,6 @@
+> **Raw source.** Verbatim external material - forum transcriptions or research
+> agent output. Never edited to fix a claim; corrections go in the wiki pages.
+
 # Research archive
 
 Everything gathered for this competition, in full. Four literature-review agents

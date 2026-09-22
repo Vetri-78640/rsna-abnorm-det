@@ -10,10 +10,18 @@ limit, final submission **2026-10-22**. Owner: Vetri (Kaggle `imvetri0`, GitHub
 2. `wiki/index.md` - one line per page. Open only the pages the task needs.
 3. `wiki/log.md` - what changed recently. Check it before trusting any page.
 
-**The wiki is the source of truth.** `docs/` is the long-form archive; where they
-disagree, the wiki wins. Maintenance rules are in `wiki/SCHEMA.md`.
+**The wiki is the source of truth.** `wiki/archive/` holds dated long-form
+reasoning and `wiki/raw/` holds verbatim external sources; where either disagrees
+with a wiki page, the page wins. Maintenance rules are in `wiki/SCHEMA.md`.
 
 ## Hard rules
+
+- **Every change updates the docs in the same commit.** Code, experiment,
+  measurement, submission or decision: update the affected wiki page(s), append a
+  line to `wiki/log.md`, and run `python3 wiki/build_index.py`. Docs are never a
+  follow-up task. CI fails a change that touches code without touching the log.
+- **No attribution.** Never add `Co-Authored-By`, `Claude-Session:` or any Claude
+  credit to commits or PR bodies. Plain messages only.
 
 - **Never commit or push competition data.** `data/`, `logs/` and
   `artifacts/weak_labels.csv` (holds the 58 gold labels) are gitignored.
@@ -31,8 +39,8 @@ disagree, the wiki wins. Maintenance rules are in `wiki/SCHEMA.md`.
   running code, several of them in its own code.
 - Concise answers. Vetri has repeatedly asked for shorter output - lead with the
   answer, keep it to what matters.
-- When you learn something durable, update the wiki page, append to `wiki/log.md`,
-  and run `python3 wiki/build_index.py`.
+- Work on a branch per issue and open a PR that says `Closes #N`. See
+  `wiki/howto/github-workflow.md`.
 
 ## Commands
 
@@ -49,10 +57,11 @@ kaggle competitions leaderboard -c rsna-knee-abnormality-detection --download
 
 ```
 wiki/        the maintained knowledge base - start here
+  raw/       verbatim external sources: forum threads, research-agent output
+  archive/   dated long-form reasoning, frozen: FINDINGS, STRATEGY, PLAN, extras
 src/         geometry, sequence typing, sampling, normalisation, lexicon patch
 scripts/     audits, label generation, budget model
 tests/       52 tests
 notebooks/   Kaggle notebooks we wrote
-docs/        long-form archive
 *.ipynb      public Kaggle notebooks we run (0.939 baseline, 0.943 current best)
 ```

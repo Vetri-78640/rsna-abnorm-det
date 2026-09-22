@@ -16,7 +16,7 @@ turns retrying.
 - The pages render client-side; WebFetch sees only the title.
 
 **Do this instead:** ask Vetri to paste or screenshot the thread. Transcribe it into
-`docs/community.md` and update the relevant wiki pages, then add a line to
+`wiki/raw/forum.md` and update the relevant wiki pages, then add a line to
 [[log]].
 
 Unread threads worth having: "Best single-model score", "Metric edge cases",

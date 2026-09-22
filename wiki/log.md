@@ -8,7 +8,7 @@ Types: `build` (code), `measure` (a number we produced), `ingest` (a source read
 
 ## [2026-09-08] build | src/ modules and 49 tests
 Geometry, sequence typing, sampling, normalisation, lexicon patch. Research agents
-reported; archive in docs/researched.md.
+reported; archive in wiki/raw/research.md.
 
 ## [2026-09-08] measure | label audit
 58/4,407 gold, all-or-nothing. Gold is trauma-enriched. Reports 39.3% English.
@@ -78,3 +78,21 @@ by numpy Newton, matching the old file to 5e-06.
 
 ## [2026-09-22] decide | D005 repo stays public
 Vetri chose public over the private recommendation. Data remains gitignored.
+
+## [2026-09-22] build | docs/ folded into the wiki
+community.md and researched.md are external material, so they became
+wiki/raw/forum.md and wiki/raw/research.md. FINDINGS, STRATEGY, PLAN and extras are
+our own dated reasoning, so they became wiki/archive/ with a frozen banner. HANDOFF
+is replaced by CLAUDE.md, which every session loads automatically. 20 files had
+their paths rewritten, including a stale reference to a docs/RESEARCH.md that never
+existed.
+
+## [2026-09-22] build | glossary, open questions, wiki lint, CI
+glossary.md defines arm, slot, key, gold, commit run and the rest. open-questions.md
+lists nine unknowns with what settles each. wiki/lint.py checks links, frontmatter
+and index freshness. CI runs tests, lint, and a check that code changes carry a log
+entry.
+
+## [2026-09-22] decide | no attribution; docs updated every iteration
+Vetri: never co-author Claude in commits or PRs. Every change updates its docs in the
+same commit, now enforced by CI.

@@ -33,7 +33,19 @@ git push -u origin HEAD
 gh pr create --fill --body "Closes #<n>"
 ```
 
-Every PR that produces a number updates the matching `wiki/experiments/` page.
+Every PR updates its docs in the same change - the affected wiki pages, a line in
+`wiki/log.md`, and the regenerated index. **CI enforces it:** on every PR it runs the
+tests, `wiki/lint.py`, and `scripts/check_docs_updated.sh`, which fails if `src/`,
+`scripts/`, `tests/`, `notebooks/` or any notebook changed without `wiki/log.md`.
+
+Run the same checks locally before pushing:
+
+```bash
+./run_tests.sh && python3 wiki/lint.py && scripts/check_docs_updated.sh main
+```
+
+**No attribution.** Commit messages and PR bodies carry no `Co-Authored-By`,
+`Claude-Session:` or other Claude credit.
 
 ## Never
 

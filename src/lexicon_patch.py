@@ -1,7 +1,7 @@
 """Verified fixes to the public notebook's report lexicon (cells 1-3).
 
 Every defect below was reproduced by executing the original lexicon; the before
-and after numbers are in docs/FINDINGS.md and are asserted in
+and after numbers are in wiki/archive/FINDINGS.md and are asserted in
 tests/test_lexicon_patch.py.
 
 Why this matters more than any model change: all three model families in the
