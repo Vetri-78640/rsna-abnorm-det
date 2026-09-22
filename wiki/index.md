@@ -47,6 +47,7 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 
 ## How-to
 
+- [github-workflow](howto/github-workflow.md) - Work is tracked as one issue per task, grouped into four dated milestones, with one branch and one PR per issue that closes it.
 - [read-the-forum](howto/read-the-forum.md) - The Kaggle forum cannot be read by any tool here - ask for a paste.
 - [run-a-kaggle-notebook](howto/run-a-kaggle-notebook.md) - Commit with GPU T4 x2 and internet off, attach datasets by content, resume from the notebook's own output, and grep the log before trusting a run.
 
