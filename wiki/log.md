@@ -96,3 +96,8 @@ entry.
 ## [2026-09-22] decide | no attribution; docs updated every iteration
 Vetri: never co-author Claude in commits or PRs. Every change updates its docs in the
 same commit, now enforced by CI.
+
+## [2026-09-22] build | stripped attribution trailers from history
+The first four commits carried a Claude-Session trailer. Rewrote main with a
+message-only filter and force-pushed with lease. Trees verified byte-identical before
+and after. Local backup tag: backup-before-trailer-strip.
