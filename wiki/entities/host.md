@@ -2,7 +2,7 @@
 type: entity
 updated: 2026-09-22
 status: current
-sources: [docs/community.md, forum 2026-09-10]
+sources: [wiki/raw/forum.md, forum 2026-09-10]
 ---
 
 # The host and their rulings

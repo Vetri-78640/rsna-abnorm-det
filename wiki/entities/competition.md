@@ -2,7 +2,7 @@
 type: entity
 updated: 2026-09-22
 status: current
-sources: [docs/extras.md, kaggle CLI, rsna.org]
+sources: [wiki/archive/extras.md, kaggle CLI, rsna.org]
 ---
 
 # The competition

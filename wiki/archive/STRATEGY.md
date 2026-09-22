@@ -1,3 +1,7 @@
+> **Archive, frozen 2026-09-10.** Dated long-form reasoning, kept as the record of
+> what was believed and when. Some claims here have since been corrected - the
+> maintained pages in `wiki/` win. Start at `wiki/overview.md`.
+
 # Strategy - what to build, and why
 
 Written 2026-09-10, 42 days to the final submission. This file holds the
@@ -153,7 +157,7 @@ and compute actually support.
 
 - If the gate notebook shows the image model far exceeding the label extractor on
   the gold 58, the label lever is bigger than assessed here and week 3 should
-  grow. See `community.md` for the diagnostic.
+  grow. See `wiki/raw/forum.md` for the diagnostic.
 - If our sampling ablation lands under +0.002 on our own CV, the thesis is wrong
   and the remaining weeks should go to the efficiency prize, which is a separate
   $18,000 and far less contested.

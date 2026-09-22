@@ -5,7 +5,7 @@ downstream decision branches on.
   1. How many studies carry gold labels?  A research agent reported 58 of 4,407
      from secondary sources. If that is right, NO per-label parameter can be
      fitted on gold -- a 3%-prevalence label would have about two positives --
-     and several recommendations in docs/RESEARCH.md are void.
+     and several recommendations in wiki/raw/research.md are void.
   2. Per-label prevalence, which sets macro-AUC leverage. Moving Effusion from
      0.95 to 0.96 gains 0.0008 macro; moving Fracture from 0.80 to 0.88 gains
      0.0067. Effort should follow this table, not intuition.

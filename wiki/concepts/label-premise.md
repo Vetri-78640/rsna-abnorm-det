@@ -2,7 +2,7 @@
 type: concept
 updated: 2026-09-22
 status: current
-sources: [docs/community.md, audit]
+sources: [wiki/raw/forum.md, audit]
 ---
 
 # The label premise: do better labels help?

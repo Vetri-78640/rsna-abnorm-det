@@ -7,11 +7,13 @@ the maintained layer, and this file says how to maintain it.
 
 | layer | where | rule |
 |---|---|---|
-| raw sources | `docs/`, `logs/`, `*.ipynb`, `data/` | immutable record; never edited to fix a claim |
+| raw sources | `wiki/raw/`, `logs/`, `*.ipynb`, `data/` | verbatim external material; never edited to fix a claim |
+| archive | `wiki/archive/` | our own dated long-form reasoning; frozen, may be wrong |
 | wiki | `wiki/` | the source of truth; atomic pages; maintained |
 | schema | this file and `/CLAUDE.md` | co-evolves with use |
 
-When `docs/` and `wiki/` disagree, **the wiki wins**.
+When `raw/` or `archive/` disagrees with a wiki page, **the page wins**. Fix the
+page, never the archive - the archive is the record of what we thought and when.
 
 ## Page types and folders
 
@@ -39,11 +41,15 @@ Link with `[[page-name]]`. Keep pages short. Split rather than grow.
    silently delete them - the history of being wrong is useful.
 3. Append one line to [[log]].
 4. Regenerate the index: `python3 wiki/build_index.py`.
+5. Run `python3 wiki/lint.py`. All of this lands in the **same commit** as the work -
+   CI rejects a PR that changes code without touching `wiki/log.md`.
 
 **Query:** read [[overview]], then [[index]], then only the pages needed. A good
 answer that is not in the wiki becomes a new page.
 
-**Lint** before trusting the wiki after a gap:
+**Lint** is automated: `python3 wiki/lint.py` checks every `[[link]]` and relative
+link resolves, every page has frontmatter, and the index is current. CI runs it.
+By hand, before trusting the wiki after a gap:
 - Does any page contradict another? Does [[overview]] match [[E004-submissions]]?
 - Are `open` decisions still open?
 - Has the leaderboard moved since `updated`?

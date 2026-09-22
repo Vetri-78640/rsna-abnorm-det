@@ -2,7 +2,7 @@
 type: concept
 updated: 2026-09-22
 status: current
-sources: [docs/STRATEGY.md, computed 2026-09-10]
+sources: [wiki/archive/STRATEGY.md, computed 2026-09-10]
 ---
 
 # Noise floor: what differences are real

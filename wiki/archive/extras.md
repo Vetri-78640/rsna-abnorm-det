@@ -1,3 +1,7 @@
+> **Archive, frozen 2026-09-10.** Dated long-form reasoning, kept as the record of
+> what was believed and when. Some claims here have since been corrected - the
+> maintained pages in `wiki/` win. Start at `wiki/overview.md`.
+
 # Extras - competition mechanics, rules, and things that bite
 
 Everything that is not research or code but changes what you can do. Sourced from
@@ -210,7 +214,7 @@ Recorded so a future session does not assume they were checked.
 **Still open:**
 
 4. **Kaggle discussion threads.** WebFetch cannot read them; they render
-   client-side. All forum-derived claims in `researched.md` came from secondary
+   client-side. All forum-derived claims in `wiki/raw/research.md` came from secondary
    sources and should be treated as weaker.
 5. **The 86-tag allowlist contents.** Needs actual DICOMs; the competition
    publishes no header CSV, only the five files `fetch_metadata.sh` pulls.
