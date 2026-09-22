@@ -75,3 +75,6 @@ files before commit. Comments moved to their own lines; `git check-ignore` verif
 weak_labels.csv is now rebuildable, so it never needs to be in git. scipy dropped:
 its native library fails to load after the macOS 27 upgrade; Platt is now fitted
 by numpy Newton, matching the old file to 5e-06.
+
+## [2026-09-22] decide | D005 repo stays public
+Vetri chose public over the private recommendation. Data remains gitignored.

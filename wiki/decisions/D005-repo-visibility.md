@@ -1,11 +1,11 @@
 ---
 type: decision
 updated: 2026-09-22
-status: open
+status: current
 sources: [gh repo view]
 ---
 
-# D005 - GitHub repo visibility (OPEN - needs Vetri)
+# D005 - GitHub repo visibility: public
 
 `Vetri-78640/rsna-abnorm-det` was created **PUBLIC** on 2026-09-22.
 
@@ -22,4 +22,9 @@ sources: [gh repo view]
 4. **It costs nothing to wait.** Winners must open-source everything under
    CC-BY-NC afterwards anyway.
 
-**Decision pending.**
+**Decided 2026-09-22 by Vetri: keep public.** The recommendation above was
+considered and declined. Consequences to keep in mind:
+
+- Everything pushed, including issue text, is visible to every competitor.
+- Competition data stays gitignored; verify with `git check-ignore -v` before any
+  push.
