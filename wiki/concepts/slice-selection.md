@@ -33,15 +33,15 @@ counts, that fixed budget produces very different strides
 
 | slot | budget | median stride | p95 | share over 2.5 |
 |---|---|---|---|---|
-| Sagittal fat-sat | 18 | 1.55 | 2.51 | 5.3% |
-| Sagittal non-FS | 14 | 2.06 | 3.57 | 9.8% |
-| Coronal fat-sat | 12 | 2.40 | 3.04 | 32.7% |
-| **Coronal non-FS** | 8 | **3.60** | 4.44 | **84.7%** |
-| **Axial fat-sat** | 12 | 2.56 | **11.52** | 52.3% |
-| Axial non-FS | 12 | 2.56 | 12.80 | 56.0% |
+| Sagittal fat-sat | 18 | 1.55 | 2.51 | 5.0% |
+| Sagittal non-FS | 14 | 2.06 | 4.11 | 10.3% |
+| Coronal fat-sat | 12 | 2.40 | 3.04 | 32.2% |
+| **Coronal non-FS** | 8 | **3.60** | 4.44 | **83.6%** |
+| **Axial fat-sat** | 12 | 2.56 | **11.52** | 51.6% |
+| Axial non-FS | 12 | 2.56 | 6.43 | 55.8% |
 
-[Certain, measured on 10,034 series] **80% of studies have at least one slot sampled
-at a stride over 2.5.**
+[Certain, measured on **all 24,386 series**] **79.6% of studies have at least one
+slot sampled at a stride over 2.5.**
 
 Read this carefully rather than as a slam dunk. The sampling is densest exactly where
 fine detail is classically needed - sagittal, where the meniscal body spans 2-3
@@ -50,10 +50,10 @@ non-FS and axial, which carry **MCL, Baker's, Effusion and PF OA**: four of twel
 labels. Whether those findings need dense sampling is exactly what the week-2
 ablation tests.
 
-The unambiguous defect is the axial tail: a 3D axial series of 160 slices sampled
-at 12 gets a stride of 12, which discards almost everything. 1.6% of sagittal series
-are the opposite problem - the budget exceeds the slices available, so slices are
-sampled twice.
+The unambiguous defect is the axial tail: a 3D axial series of 144 slices sampled at
+12 gets a stride of 11.5, which discards almost everything. 1.4% of sagittal fat-sat
+series are the opposite problem - the budget exceeds the slices available, so slices
+are sampled twice.
 
 An adaptive per-series stride is the obvious fix, and it is what `src/sampling.py`
 is for.

@@ -79,9 +79,9 @@ candidate series. How a pipeline picks among them matters for those.
 
 ## Slices per series
 
-Measured on 10,034 complete series (41% of the set, from the file listing - UIDs are
-random so this is an unbiased sample). The extrapolated total is 0.56 TB against the
-stated 570 GB, which confirms the sample and the parsing.
+Measured on **all 24,386 series** from the complete file listing. The implied total
+is **570 GB against the stated 569.76 GB**, and 819,635 slices plus the 5 CSVs is
+exactly the stated 819,640 files - so this is the whole dataset, not a sample.
 
 | | slices |
 |---|---|
@@ -91,9 +91,9 @@ stated 570 GB, which confirms the sample and the parsing.
 | p75 / p95 | 34 / 45 |
 | p99 / max | 160 / 320 |
 
-8.3% of series have under 20 slices and **2.8% have over 100** - the tail is axial
-and sagittal 3D acquisitions (axial p95 is 144-160 slices). Slices per study: median
-162, p95 383, max 616. Bytes per slice: median 0.53 MB, p95 1.84 MB.
+8.4% of series have under 20 slices and **2.9% have over 100** - the tail is axial
+and sagittal 3D acquisitions (axial fat-sat p95 is 144 slices). Slices per study:
+median 162, p95 369, max 632. Total 819,635 slices.
 
 The older claim "20-45 slices, median 30" was a research estimate. The median is
 right; the tails are wider than stated in both directions.

@@ -21,6 +21,6 @@ Close a question by moving its answer onto the right page and deleting the row.
 | 7 | How many series does the fluid flag misfile? (one T2 confirmed so far) | a slot every public solution misfiles | `notebooks/header_census.ipynb`, CPU only |
 | 10 | Is `Laterality` present in every series? | whether laterality is simply solved | same census |
 | 11 | Does `PatientID` repeat across studies? | whether CV folds must group by patient | same census |
-| 12 | ~~Slices per series?~~ **Answered** on 41% of series: median 30, p99 160, max 320. Crawl continuing for the rest. | stride design | done, see [[dataset]] |
+| ~~12~~ | ~~Slices per series?~~ **Closed.** All 24,386 series: median 30, p99 160, max 320. | stride design | done, see [[dataset]] |
 | 8 | Are click-through research datasets allowed? | MRNet, OAI, fastMRI+ pretraining | host answer on the forum |
 | 9 | How much of the leaders' margin is public-LB overfit? | how we pick finals | only the private LB, after 2026-10-22 |
