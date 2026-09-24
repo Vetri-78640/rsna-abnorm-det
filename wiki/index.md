@@ -47,6 +47,7 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 - [E002-study-major-loop](experiments/E002-study-major-loop.md) - Hypothesis: the 0.939 notebook decodes each study 4x; reordering removes the waste with no accuracy change.
 - [E003-encode-and-gate](experiments/E003-encode-and-gate.md) **[in-progress]** - Measures whether label quality is worth anything on this data, by caching encoder features once and training the head under several label sets.
 - [E004-submissions](experiments/E004-submissions.md) - Our best public score is 0.941, but the field inflated so fast that it fell from rank 193 to 812 in twelve days without regressing.
+- [E005-control-and-ablation](experiments/E005-control-and-ablation.md) **[in-progress]** - The training pipeline that did not exist before.
 
 ## How-to
 
