@@ -117,3 +117,17 @@ organisers - the flag tracks fat suppression, not fluid sensitivity.
 notebooks/header_census.ipynb reads one header per series for all 24,371 series,
 CPU only; dry-run on the real sample. scripts/crawl_file_inventory.py lists all
 819,640 files for slices per series; running.
+
+## [2026-09-24] measure | slices per series, from 41% of the file listing
+Median 30, p5 18, p95 45, p99 160, max 320; 2.8% of series exceed 100 slices.
+Extrapolated total 0.56 TB against the stated 570 GB, so the sample is sound.
+The public fixed slice budgets give a median stride of 3.60 on coronal non-FS
+(84.7% over 2.5) and a p95 stride of 11.5 on axial. 80% of studies have at least
+one slot sampled at stride over 2.5. Sagittal, the slot that matters most for the
+meniscal body, is the one that is already fine.
+
+## [2026-09-24] correct | crawler retry was too impatient
+It gave up after 6 attempts over 105 s at page 1,677 and reported an empty stderr.
+The API rate-limits after a few thousand rapid pages and recovers. Now 12 attempts
+with backoff to 5 minutes, the failing stdout and stderr printed, a 20 s pause every
+500 pages, and exit code 2 with resume instructions. Resumed from the saved token.
