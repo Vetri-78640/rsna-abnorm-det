@@ -144,3 +144,10 @@ notebooks/cache_and_train_control.ipynb builds a 224 px cache under either sampl
 rule and trains a 5-fold control. Dry-run on both paths. Two silent bugs caught:
 order_slices/laterality_flips return tuples (a bare except would have skipped
 laterality entirely), and only fold 0 had its encoder frozen.
+
+## [2026-09-24] measure | complete file inventory, all 819,640 files
+The crawl finished. 24,386 series, 819,635 slices plus 5 CSVs = the stated 819,640
+files, and 570 GB against the stated 569.76 GB - so the numbers are the dataset, not
+a sample. The 41% sample had predicted every figure to within 1%: median 30 slices,
+p99 160, max 320; coronal non-FS stride 83.6% over 2.5 (sample said 84.7%); 79.6% of
+studies have a slot over stride 2.5 (sample said 80.0%).
