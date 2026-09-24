@@ -131,3 +131,7 @@ It gave up after 6 attempts over 105 s at page 1,677 and reported an empty stder
 The API rate-limits after a few thousand rapid pages and recovers. Now 12 attempts
 with backoff to 5 minutes, the failing stdout and stderr printed, a 20 s pause every
 500 pages, and exit code 2 with resume instructions. Resumed from the saved token.
+
+## [2026-09-24] correct | crawler page counter reset on resume
+The counter was per run, so the saved state under-reported progress after a resume.
+Now cumulative, and it prints the page it resumes from.

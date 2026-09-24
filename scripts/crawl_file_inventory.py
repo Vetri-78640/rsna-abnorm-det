@@ -12,14 +12,18 @@ import csv, json, pathlib, subprocess, sys, time
 COMP = "rsna-knee-abnormality-detection"
 out = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "data/file_inventory.csv")
 state = out.with_suffix(".state.json")
-tok = json.loads(state.read_text())["token"] if state.exists() else None
+st = json.loads(state.read_text()) if state.exists() else {}
+tok = st.get("token")
+pages0 = st.get("pages", 0)          # cumulative across resumes, not per run
 mode = "a" if (state.exists() and out.exists()) else "w"
+if pages0:
+    print(f"resuming from page {pages0}")
 
 with out.open(mode, newline="") as fh:
     w = csv.writer(fh)
     if mode == "w":
         w.writerow(["name", "size"])
-    pages = 0
+    pages = pages0
     while True:
         cmd = ["kaggle", "competitions", "files", "-c", COMP, "--page-size", "200", "--csv"]
         if tok:
