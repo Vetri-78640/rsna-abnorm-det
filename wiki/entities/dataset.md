@@ -77,6 +77,27 @@ non-FS. **Any model must handle missing slots** - the Raptor family's
 **Selection choices:** 13.6% of filled slots (2,898 of 21,334) have more than one
 candidate series. How a pipeline picks among them matters for those.
 
+## Slices per series
+
+Measured on 10,034 complete series (41% of the set, from the file listing - UIDs are
+random so this is an unbiased sample). The extrapolated total is 0.56 TB against the
+stated 570 GB, which confirms the sample and the parsing.
+
+| | slices |
+|---|---|
+| min | 11 |
+| p5 / p25 | 18 / 25 |
+| **median** | **30** |
+| p75 / p95 | 34 / 45 |
+| p99 / max | 160 / 320 |
+
+8.3% of series have under 20 slices and **2.8% have over 100** - the tail is axial
+and sagittal 3D acquisitions (axial p95 is 144-160 slices). Slices per study: median
+162, p95 383, max 616. Bytes per slice: median 0.53 MB, p95 1.84 MB.
+
+The older claim "20-45 slices, median 30" was a research estimate. The median is
+right; the tails are wider than stated in both directions.
+
 ## Reports
 
 - **Length:** min 52 chars, p10 288, median 977, p90 2,118, max 4,743. 41 reports

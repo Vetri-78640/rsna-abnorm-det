@@ -25,6 +25,39 @@ fix paid **+0.0059 and moved 10 of 12 labels**. Compare encoder scaling: +0.0011
 than one series to choose from. So slice selection is also *series* selection, and
 it must degrade gracefully when a slot is empty. See [[dataset]].
 
+## Measured: the public sampling is coarse outside sagittal
+
+The Raptor family takes a fixed number of slices per slot. Against the real slice
+counts, that fixed budget produces very different strides
+(stride = slices spanned / slices taken, over the 0.02-0.98 span):
+
+| slot | budget | median stride | p95 | share over 2.5 |
+|---|---|---|---|---|
+| Sagittal fat-sat | 18 | 1.55 | 2.51 | 5.3% |
+| Sagittal non-FS | 14 | 2.06 | 3.57 | 9.8% |
+| Coronal fat-sat | 12 | 2.40 | 3.04 | 32.7% |
+| **Coronal non-FS** | 8 | **3.60** | 4.44 | **84.7%** |
+| **Axial fat-sat** | 12 | 2.56 | **11.52** | 52.3% |
+| Axial non-FS | 12 | 2.56 | 12.80 | 56.0% |
+
+[Certain, measured on 10,034 series] **80% of studies have at least one slot sampled
+at a stride over 2.5.**
+
+Read this carefully rather than as a slam dunk. The sampling is densest exactly where
+fine detail is classically needed - sagittal, where the meniscal body spans 2-3
+slices - and that slot is fine (5.3% over stride 2.5). The coarse slots are coronal
+non-FS and axial, which carry **MCL, Baker's, Effusion and PF OA**: four of twelve
+labels. Whether those findings need dense sampling is exactly what the week-2
+ablation tests.
+
+The unambiguous defect is the axial tail: a 3D axial series of 160 slices sampled
+at 12 gets a stride of 12, which discards almost everything. 1.6% of sagittal series
+are the opposite problem - the budget exceeds the slices available, so slices are
+sampled twice.
+
+An adaptive per-series stride is the obvious fix, and it is what `src/sampling.py`
+is for.
+
 ## What we have
 
 `src/sampling.py`: per-label anatomical bands, stack ends never discarded,

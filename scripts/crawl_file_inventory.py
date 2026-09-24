@@ -24,13 +24,23 @@ with out.open(mode, newline="") as fh:
         cmd = ["kaggle", "competitions", "files", "-c", COMP, "--page-size", "200", "--csv"]
         if tok:
             cmd += ["--page-token", tok]
-        for attempt in range(6):
+        # The API rate-limits after a few thousand rapid pages. It recovers, so be
+        # patient: exponential backoff to 5 minutes, and say what actually failed -
+        # an earlier version retried 6 times over 105 s and reported an empty stderr.
+        for attempt in range(12):
             r = subprocess.run(cmd, capture_output=True, text=True)
             if r.returncode == 0 and "name,size" in r.stdout:
                 break
-            time.sleep(5 * (attempt + 1))
+            wait = min(300, 5 * 2 ** attempt)
+            print(f"  page {pages}: attempt {attempt + 1} failed "
+                  f"(exit {r.returncode}), retry in {wait}s\n"
+                  f"    stdout: {r.stdout[:160]!r}\n    stderr: {r.stderr[:160]!r}",
+                  flush=True)
+            time.sleep(wait)
         else:
-            sys.exit(f"gave up after retries at page {pages}: {r.stderr[:200]}")
+            print(f"gave up at page {pages}. Progress is saved - rerun the same "
+                  f"command to resume from the stored token.", flush=True)
+            sys.exit(2)
         lines = r.stdout.splitlines()
         nxt = None
         rows = []
@@ -46,9 +56,11 @@ with out.open(mode, newline="") as fh:
         tok = nxt
         state.write_text(json.dumps({"token": tok, "pages": pages}))
         if pages % 100 == 0:
-            print(f"{pages} pages", flush=True)
+            print(f"{pages} pages, {pages * 200:,} files", flush=True)
+        if pages % 500 == 0:
+            time.sleep(20)          # breathe, so the rate limiter does not trip
         if not tok:
             break
-        time.sleep(0.2)
+        time.sleep(0.3)
 state.unlink(missing_ok=True)
 print(f"done: {pages} pages -> {out}")
