@@ -135,3 +135,12 @@ with backoff to 5 minutes, the failing stdout and stderr printed, a 20 s pause e
 ## [2026-09-24] correct | crawler page counter reset on resume
 The counter was per run, so the saved state under-reported progress after a resume.
 Now cumulative, and it prints the page it resumes from.
+
+## [2026-09-24] build | training pipeline: cache builder, folds, control model
+src/folds.py clusters near-duplicate reports and stratifies folds over clusters;
+8 tests. Measured: 4,407 reports -> 4,101 clusters, against 4,276 MD5 groups in the
+public notebook, so it splits 175 near-duplicates across folds.
+notebooks/cache_and_train_control.ipynb builds a 224 px cache under either sampling
+rule and trains a 5-fold control. Dry-run on both paths. Two silent bugs caught:
+order_slices/laterality_flips return tuples (a bare except would have skipped
+laterality entirely), and only fold 0 had its encoder frozen.
