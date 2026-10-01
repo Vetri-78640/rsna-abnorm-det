@@ -77,6 +77,12 @@ non-FS. **Any model must handle missing slots** - the Raptor family's
 **Selection choices:** 13.6% of filled slots (2,898 of 21,334) have more than one
 candidate series. How a pipeline picks among them matters for those.
 
+**Study shape is not standardised.** There are **159 distinct (plane, fat-sat)
+combinations** across 4,407 studies, and the most common one covers only **39.6%**;
+the top three together cover 57.0%. [Certain, ours] So a missing-slot mask is not an
+edge case to handle, it is the normal path for 60% of studies. This reproduces the
+forum EDA figure of "the most common combination covers only 40% of studies".
+
 ## Slices per series
 
 Measured on **all 24,386 series** from the complete file listing. The implied total

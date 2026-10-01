@@ -32,6 +32,7 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 - [permutation-invariance](concepts/permutation-invariance.md) - The public pooling heads ignore slice order, so the slice-ordering bug cannot swap medial for lateral the way older docs claimed.
 - [preprocessing-contract](concepts/preprocessing-contract.md) - Feeding a checkpoint inputs prepared differently from its training fails silently - no error, a plausible curve, a wrong conclusion.
 - [slice-selection](concepts/slice-selection.md) - The largest measured single lever in the competition.
+- [validation-protocol](concepts/validation-protocol.md) - Train on report-derived labels, measure on 5-fold CV over all 4,407 studies using leak-free report-cluster folds, accept a change only at +0.003 macro
 
 ## Decisions - what we chose and why
 
@@ -40,6 +41,7 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 - [D003-no-bigger-encoder](decisions/D003-no-bigger-encoder.md) - Decision: stay at ViT-S and the current backbones - two teams measured ViT-B as a null.
 - [D004-no-target-calibration](decisions/D004-no-target-calibration.md) - Decision: do not Platt-calibrate lexicon scores before training.
 - [D005-repo-visibility](decisions/D005-repo-visibility.md) - Vetri-78640/rsna-abnorm-det was created PUBLIC on 2026-09-22.
+- [D006-validate-on-cv-not-gold58](decisions/D006-validate-on-cv-not-gold58.md) - Decided: the 58 gold studies are a development panel, not a ruler.
 
 ## Experiments - what we ran
 

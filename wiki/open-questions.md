@@ -18,9 +18,10 @@ Close a question by moving its answer onto the right page and deleting the row.
 | ~~4~~ | ~~Pending 2026-09-22 submission?~~ **Closed.** 0.943, now our standing score; rank 533 of 4,783. | our baseline | done, see [[E004-submissions]] |
 | 5 | Does a competition rerun spend the 30 h/week GPU quota? | how freely we can submit | watch the quota meter across one submission |
 | 6 | What is the layout of `extra_vols.npy`? | whether 3,030 or 2,200 studies skip decoding | load one row on Kaggle |
-| 7 | How many series does the fluid flag misfile? (one T2 confirmed so far) | a slot every public solution misfiles | `notebooks/header_census.ipynb`, CPU only |
-| 10 | Is `Laterality` present in every series? | whether laterality is simply solved | same census |
+| 7 | How many series does the fluid flag misfile? (one T2 confirmed so far) **A forum EDA agrees: "non-FS" mixes T1, PD and T2.** | a slot every public solution misfiles | `notebooks/header_census.ipynb`, CPU only |
+| 10 | Is `Laterality` present in every series? **[Likely] no - a forum EDA says missing in about half of studies.** | whether laterality is simply solved | same census, to confirm |
 | 11 | Does `PatientID` repeat across studies? | whether CV folds must group by patient | same census |
 | ~~12~~ | ~~Slices per series?~~ **Closed.** All 24,386 series: median 30, p99 160, max 320. | stride design | done, see [[dataset]] |
 | 8 | Are click-through research datasets allowed? | MRNet, OAI, fastMRI+ pretraining | host answer on the forum |
 | 9 | How much of the leaders' margin is public-LB overfit? | how we pick finals | only the private LB, after 2026-10-22 |
+| 13 | Does a simple CNN at 224 px really reach 0.94+, as two top-100 competitors claim? | whether our DINOv3 plan is the wrong shape entirely | issue #23 |

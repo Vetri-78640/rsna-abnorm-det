@@ -43,6 +43,29 @@ No variant of its formula is distinguishable from another at 58 studies - the
 Hanley-McNeil resolution is 0.191 and the whole spread across seven variants is
 0.055. Tuning it further is overfitting. See [[E006-synovitis-fill]].
 
+## The silence problem is not only Synovitis - measured on our own lexicon
+
+Our extractor against gold prevalence on the 58, all 4,407 reports scanned:
+
+| finding | report says POSITIVE | report mentions at all | gold positive |
+|---|---|---|---|
+| Fracture | **7.1%** | 20.1% | **31%** |
+| Synovitis | 12.4% | 12.8% | **47%** |
+| Effusion | 58.5% | 85.7% | 60% |
+
+Fracture is the second silence problem and nobody has worked on it. Reports call it
+in 7.1% of studies while radiologists reading the images call it in 31% - a 4.4x
+gap. [Certain, ours] This independently reproduces gchauhan's forum figure of "7% of
+reports but 31% of expert labels" to the decimal, which is a good check on both.
+
+Effusion is the opposite case and the reason the backoff works: reports discuss it
+85.7% of the time and call it 58.5%, against 60% gold. The report is a reliable
+witness for effusion and an unreliable one for synovitis and fracture.
+
+dreaddevelopment's audit adds the mechanism: **12 of 27 expert-positive Synovitis
+studies had no explicit Synovitis statement at all.** The label is not recoverable
+from those reports by any extractor.
+
 ## Rule
 
 Ask the labeller for "I don't know" as a first-class answer. Impute only where
