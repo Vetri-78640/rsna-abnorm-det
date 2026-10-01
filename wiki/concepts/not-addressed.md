@@ -1,8 +1,8 @@
 ---
 type: concept
-updated: 2026-09-22
+updated: 2026-10-02
 status: current
-sources: [forum thread, stevenleehans]
+sources: [forum thread, stevenleehans, src/lexicon_base.py, data/train.csv]
 ---
 
 # "Not addressed": silence means different things per finding
@@ -31,9 +31,24 @@ Silent Baker's is a negative. Silent synovitis is uninformative.
   (P(syn|eff) = 0.63 vs 0.22). Key 0.8780 to **0.8873**.
 - **Blanket:** learned imputation for all twelve. Key 0.8805 - **worse**.
 
+## Our lexicon already does the targeted version
+
+`lexicon_base.FEATURES['synovitis_backoff']`, on by default, fills Synovitis from
+the Effusion field plus a synovial-proxy count whenever the report is silent. It
+fires on **87.2%** of studies and is worth **+0.0377 Synovitis AUC, +0.0031 macro**
+on the gold 58. Our own undecided rate and conditional probabilities reproduce the
+table above from our data: 0.34 silent against 0.76 spoken. [Certain]
+
+No variant of its formula is distinguishable from another at 58 studies - the
+Hanley-McNeil resolution is 0.191 and the whole spread across seven variants is
+0.055. Tuning it further is overfitting. See [[E006-synovitis-fill]].
+
 ## Rule
 
 Ask the labeller for "I don't know" as a first-class answer. Impute only where
 silence is uninformative.
 
-Related: [[label-premise]], [[public-datasets]]
+The regex route is finished. Doing better needs a labeller that emits "not
+addressed" as a category rather than an absence of matches. [Likely]
+
+Related: [[label-premise]], [[public-datasets]], [[E006-synovitis-fill]]

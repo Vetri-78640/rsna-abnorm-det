@@ -159,3 +159,13 @@ accepted the rules is a violation. Nothing said so anywhere. `wiki/howto/onboard
 is the rebuild path: accept the rules, `fetch_metadata.sh`, `make_weak_labels.py`,
 expect `platt a=0.925 b=-1.397` as the checksum that your `train.csv` matches ours.
 Also corrected the test count in README, 52 to 60.
+## [2026-10-02] measure | Synovitis fill was already implemented (#8)
+Issue #8 asked to build the targeted Synovitis-from-Effusion fill. It already
+exists as `lexicon_base.FEATURES['synovitis_backoff']`, on by default, firing on
+3,841 of 4,407 studies. Toggling it: Synovitis AUC 0.6714 to 0.7091, macro 0.8594
+to 0.8625. Our undecided rate 87.2% and P(gold|silent) 0.34 vs P(gold|spoken) 0.76
+reproduce the forum's table from our own data. Seven formula variants span 0.055
+gold AUC against a Hanley-McNeil resolution of 0.191, so none of them is
+distinguishable and tuning is overfitting 41 gold cells. Pinned by
+tests/test_synovitis_backoff.py, which fails 5 of 7 if the block is deleted.
+Closed as already done, not as worth doing.
