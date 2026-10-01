@@ -151,3 +151,11 @@ files, and 570 GB against the stated 569.76 GB - so the numbers are the dataset,
 a sample. The 41% sample had predicted every figure to within 1%: median 30 slices,
 p99 160, max 320; coronal non-FS stride 83.6% over 2.5 (sample said 84.7%); 79.6% of
 studies have a slot over stride 2.5 (sample said 80.0%).
+
+## [2026-10-02] docs | onboarding path for a second contributor
+A fresh clone has every module and no labels, because `data/`, `logs/` and
+`artifacts/weak_labels.csv` are gitignored and sending them to someone who has not
+accepted the rules is a violation. Nothing said so anywhere. `wiki/howto/onboarding.md`
+is the rebuild path: accept the rules, `fetch_metadata.sh`, `make_weak_labels.py`,
+expect `platt a=0.925 b=-1.397` as the checksum that your `train.csv` matches ours.
+Also corrected the test count in README, 52 to 60.

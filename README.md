@@ -74,16 +74,21 @@ artifacts/
 scripts/
   fetch_metadata.sh   pull the CSVs only, not the 570 GB
   audit_labels.py     gold coverage, prevalence, language mix, lexicon scorecard
+  make_weak_labels.py rebuilds artifacts/weak_labels.csv from your own download
   audit_headers.py    tag survival, slice-normal signs, laterality, geometry
   budget_model.py     9h inference budget; --from-log calibrates on a real run
-tests/                52 tests, no data or GPU required
+tests/                60 tests, no data or GPU required
 wiki/                 the knowledge base; start at wiki/overview.md
 ```
 
 ## Quick start
 
+**New here?** `wiki/howto/onboarding.md` is the ten-minute version: accept the
+competition rules on your own Kaggle account, pull the CSVs, rebuild the labels.
+No one can send you the data - it is gitignored on purpose.
+
 ```bash
-./run_tests.sh                          # 52 tests, ~2 seconds
+./run_tests.sh                          # 60 tests, ~2 seconds
 ./scripts/fetch_metadata.sh data        # needs competition rules accepted
 python3 scripts/audit_labels.py data
 python3 scripts/audit_headers.py data/train_series --limit 400   # needs pydicom
