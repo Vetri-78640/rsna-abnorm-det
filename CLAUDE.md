@@ -29,6 +29,10 @@ with a wiki page, the page wins. Maintenance rules are in `wiki/SCHEMA.md`.
 - **Every module in `src/` is retrain-only.** Never apply its preprocessing at
   inference to a public checkpoint - that is a train/test mismatch.
 - **Select final submissions by CV, never by public LB.**
+- **CV means 5-fold on report labels over all 4,407 studies, not the gold 58.**
+  Accept a change only at **+0.003 macro**. The 58 resolve ~0.02 macro and have
+  misled three separate teams; use `src/folds.py`, not `KFold`. See
+  `wiki/decisions/D006-validate-on-cv-not-gold58.md`.
 - **Do not spend GPU time on a larger encoder.** Measured null by two teams.
 - **The Kaggle forum cannot be read by tools.** Ask Vetri to paste the thread.
 
