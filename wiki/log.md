@@ -181,3 +181,27 @@ order inside the band does not follow submission date, the usual tie-break). So 
 of the field sits inside one thousandth of AUC and +0.001 is worth about 750 places.
 Corrected the README's "0.944 to 0.947, rank 30 to 60": that range is now rank 233
 to 120, and the top ten needs 0.957.
+
+## [2026-10-02] ingest | six forum threads, and a protocol change
+Vetri pasted six threads. Every claim in them that we could check reproduced exactly
+on our data: Fracture positive in 7.1% of reports against 31% gold (forum said
+7%/31%), series per study 3 to 14 with 100% inside that range, most common
+plane-by-fat-sat combination covers 39.6% (forum said 40%). That makes these
+posters credible on the claims we cannot check.
+
+The protocol change, D006: validate on 5-fold CV against report labels over all
+4,407 studies, accept at +0.003 macro, and treat the gold 58 as a development panel
+rather than a ruler. Tucker Arrants (rank 34) says it outright; dreaddevelopment
+arrived at the same arrangement independently; stevenleehans says the 58 overturned
+three of his readings. We had already measured the same thing - Hanley-McNeil gives
+0.19 resolution on one label and 0.02 on macro - and had not acted on it.
+
+Two independent teams now report that a better label key did **not** improve their
+image model, which is the strongest evidence yet on the week-3 question. Recorded in
+label-premise. dreaddevelopment's OOF table also shows the image model beating its
+report teacher on 9 of 12 findings but losing on Lateral OA and Lateral Meniscus,
+which points at slice selection rather than labels.
+
+New: wiki/concepts/validation-protocol.md, wiki/decisions/D006-validate-on-cv-not-gold58.md.
+Open question 13 added (does a simple CNN at 224 px really reach 0.94+). Overview
+rewritten against the 2026-10-01 board.

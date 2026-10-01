@@ -256,3 +256,176 @@ Worth transcribing if a question comes up that they would settle:
 - "0.932 LB within one day. Tested for DICOM metadata shortcut" - leakage check
 - "Knee Abnormality Detection AI Challenge Overview" (host, 69 votes)
 - "How is ... Effusion graded?" - the severity thresholds behind the labels
+
+---
+
+# Second batch, transcribed 2026-10-02
+
+Pasted by Vetri from the discussion forum. Verbatim summaries of six threads. Our
+verification of the checkable numbers is in the wiki pages, not here.
+
+## Tucker Arrants (rank 34), advice thread
+
+> take the best scoring single model public notebook (ignore the blends) and
+> reproduce it locally. Use public LLM labels if you don't have your own,
+> especially those that have documented extraction processes.
+>
+> Start with 224px / 288px and a simple CNN encoder, like a ResNet34 or EffNetB0.
+> No attention mechanisms, just use simple pooling operations. You can score in
+> the 0.94+ range with this alone and it allows for efficient experiments at the
+> lower resolutions.
+>
+> Validate against the report extracted labels, not the provided 58 labels and not
+> against the LB - neither are large enough sample sizes to resolve 0.002-0.003
+> differences. You want to stack these small improvements. Set a CV threshold for
+> what is a genuine improvement and what is noise. Mine is around 0.003. You can
+> get this tighter running multiple seeds if you need. When you get a real
+> improvement, submit to LB to establish a CV - LB correlation.
+>
+> This is your baseline. Then ablate through the standard image augmentation
+> stacks... Change one thing at a time so you can isolate what helped and what did
+> not.
+>
+> Then, you can try different backbones and resolutions... After all of that, you
+> can start trying more "experimental" mechanisms like attention and/or newer image
+> encoders. I have yet to try any DINO inits and based on some preliminary
+> experiments, I have a low prior for it matching standard ImageNet init backbones.
+>
+> Kaggle public code section has been sullied with AI slop as people medal farm.
+> Be cautious of this. There are only a few useful notebooks out there. I generally
+> assume a contrarian position about public notebooks - they are likely overly
+> complex and not properly "built up" from simple baselines, using a clean CV
+> protocol.
+
+Tom Aindow (rank 99), replying: "I can also second that a simple baseline will take
+you far if done carefully OP (also have 0.94+ at 224px with small simple model)."
+
+Tucker, replying to zhenglei_001 who compared a 0.932 LB DINO model to a 0.86 CV
+ResNet:
+
+> Seems like you also compared a LB result with a CV result. 0.86 CV could score
+> 0.95 on the public leaderboard - everyone has different labels so I can't tell
+> you what a CV of 0.86 means. Use the same fold split and find the CV between your
+> models to compare them.
+>
+> DINO is not a model, it's a way of pretraining... comparing DINOv2 to a ResNet
+> changes the backbone, the objective, and the pretraining data all at once.
+
+## dreaddevelopment, "Plateau at 0.903: sharing my pipeline and ablations"
+
+Setup: report-derived soft targets with masks for missing/uncertain supervision;
+physical slice ordering by image position projected onto the slice normal; 130-mm
+crops cached at 336x336; six sequence slots; 12 selected slices per slot mainly
+within the central 20-80%; DINOv2-S/14 with hierarchical aggregation and twelve
+learned label queries; 50-epoch schedules. Four recipes x five folds = 20
+checkpoints. Validates on five-fold CV against report-derived targets and treats
+the 58 as a development panel, not a test set.
+
+OOF on the 58 expert-labelled studies, image-model AUC (95% CI) against report
+target AUC:
+
+| finding | n+ | image model | report target |
+|---|---|---|---|
+| MCL | 9 | 0.980 [0.932, 1.000] | 0.921 |
+| Baker's | 12 | 0.958 [0.892, 1.000] | 0.902 |
+| ACL | 24 | 0.958 [0.893, 1.000] | 0.944 |
+| Medial OA | 15 | 0.950 [0.889, 0.992] | 0.891 |
+| Medial Meniscus | 26 | 0.947 [0.888, 0.990] | 0.927 |
+| Contusion | 19 | 0.915 [0.826, 0.981] | 0.821 |
+| Effusion | 35 | 0.901 [0.804, 0.971] | 0.696 |
+| Fracture | 18 | 0.875 [0.756, 0.969] | 0.814 |
+| Lateral Meniscus | 23 | 0.858 [0.746, 0.949] | 0.894 |
+| PF OA | 21 | 0.824 [0.696, 0.924] | 0.819 |
+| Lateral OA | 11 | 0.782 [0.575, 0.954] | 0.829 |
+| Synovitis | 27 | 0.693 [0.544, 0.824] | 0.676 |
+
+> **Synovitis supervision is sparse.** My extractor classifies 3,610 of 4,407
+> reports (about 82%) as `not_mentioned`. Overall, 3,745 Synovitis targets (about
+> 85%) are masked... my report audit found that 12 of 27 expert-positive studies
+> had no explicit Synovitis statement.
+>
+> **Lateral findings remain difficult.** The image-model AUC is below the
+> report-target AUC for Lateral OA and Lateral Meniscus. For Lateral OA, 10 of 11
+> expert-positive studies mention the finding in their reports.
+
+Experiments that did not pay:
+
+> **Alternative public labels:** I tried Steven's public LLM labels. Better target
+> AUC on gold58 did not translate into a convincing image-model improvement in my
+> tested recipe. I do not regard target-quality differences as predicted model
+> gains.
+>
+> **Explicit 2x2 spatial region tokens:** I appended pooled regional features to the
+> label-query attention. At 50 epochs, the paired composition gain over two folds
+> was +0.000003, with 95% CI [-0.00086, +0.00084].
+>
+> **Earlier DINOv3-B trials:** These were unsuccessful under an older pipeline.
+> However, the configurations differed in preprocessing, supervision and training
+> settings, so I do not regard them as a controlled conclusion.
+
+Raising epochs 25 to 50 moved the public LB 0.899 to 0.903. He is looking for
+teammates.
+
+## stevenleehans, "'Not addressed' is a label too"
+
+Already summarised in [[not-addressed]]. New in this transcription:
+
+- Credits prior LLM label sets: **Pilkwang Kim, `rsna-knee-llm-labels`, 2026-08-06,
+  the first**; barun2104, "Stratified Folds & LLM Soft Labels", 2026-08-07;
+  lixin73, "LLM Report Labels (GPT-5.6-Sol)", 2026-08-08.
+- > A better key is not automatically a better model. We swapped these labels in
+  > and got no gain on the first attempt; it only paid off after unrelated pipeline
+  > bugs were fixed.
+- > We have had three separate readings from this ruler overturned by the
+  > leaderboard - treat small gaps as unknown, not as zero.
+- The cheating variant, selecting which findings to impute using gold, scored
+  0.8845, below the disciplined 0.8873.
+- Gold: every gold study has at least one positive finding, mean 4.14 per study.
+
+## busyaprime, "Osteoarthritis is almost never written as OA"
+
+A free rule labeller - no API, no weights, no GPU, runs in the notebook.
+
+> Under naive reading Lateral OA is 0.47 (below chance) and Medial OA is 0.59...
+> They only come alive once you mine the consequences the radiologist actually
+> writes: osteophytes, joint space narrowing, chondral loss, chondrosis,
+> gonarthrose, with the compartment word next to them, plus the rule that
+> "tricompartmental" fires all three OA labels. That vocabulary takes Lateral OA to
+> 0.83 and Medial OA to 0.75.
+
+Ablation, macro AUC over 12 on the 58: naive keyword presence 0.638, add
+sentence-scope negation 0.667, add OA consequence vocabulary **0.727**. Negation
+buys precision (fracture 0.53 to 0.80) rather than ranking. Admits 0.727 is
+in-sample because the vocabulary was refined by reading the 58 gold reports.
+
+## gchauhan, "Six data traps in RSNA Knee (EDA)"
+
+> - On the 58 expert-labelled studies, reports are silent on about half of the
+>   expert-positive Synovitis cases. Fracture is in 7% of reports but 31% of expert
+>   labels.
+> - InstanceNumber runs against slice position in over a third of series.
+> - Laterality is missing in about half of studies.
+> - The CSV hides the contrast. "non-FS" mixes T1, PD and T2, and most repeated
+>   series types are a second contrast rather than a retake.
+> - A study is a variable set of 3-14 series. The most common combination covers
+>   only 40% of studies, so a missing-series mask isn't optional.
+> - Slices are ~10x farther apart than pixels (~0.3 mm in-plane vs ~3.5 mm between).
+>   That favours 2.5D over 3D from scratch.
+
+## "What Could the Final Ceiling Be for RSNA 2026?"
+
+RSNA 2025 finished with 1,149 teams; RSNA 2026 had 1,832 teams 12 days in. Poster
+guesses a final #1 near 0.97 and best public solution near 0.95.
+
+## Lavin Wins (rank 414), multimodal fusion thread
+
+Proposes cross-attention between 3D MRI embeddings and multilingual report
+transformers. Wayne_127 replies: "During inference on the test set, diagnostic
+reports are not provided." Author: "Lol forgot to add." Recorded as a trap, not a
+result - `test.csv` has no `Report` column.
+
+## Team solicitations
+
+A competitor at 0.940 public is seeking a merge with anyone at 0.935+ with a
+different backbone. dreaddevelopment (0.903, own GPU, 20 checkpoints, full ablation
+history) is also looking.
