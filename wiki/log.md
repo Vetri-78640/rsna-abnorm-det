@@ -210,3 +210,18 @@ rewritten against the 2026-10-01 board.
 CLAUDE.md said "select finals by CV" without saying what CV is computed against,
 which is the half that was wrong. Added the +0.003 threshold, report labels over all
 4,407 studies, and src/folds.py rather than KFold.
+
+## [2026-10-02] correct | the Fracture "silence gap" was a sampling artifact
+Yesterday's intake claimed Fracture was a second silence problem: reports call it in
+7.1% of studies against 31% gold, a 4.4x gap. Wrong. The 7.1% is over all 4,407
+studies and the 31% is over the 58 gold, which are trauma-enriched - our extractor
+calls fracture on 6.7% of non-gold and 36.2% of gold studies, 5.4x. Like for like on
+the same 58, the report calls fracture 36.2% against 31.0% gold: it OVER-calls.
+Synovitis is the only label of the twelve that under-calls (29.3% against 46.6%).
+Fracture's silence is also informative, P(gold+|silent) 0.16 vs P(gold+|speaks) 0.50
+against a 0.31 base rate, so it is a worse imputation candidate than Synovitis, not
+a better one; its gold AUC is already 0.8326.
+gchauhan's forum post makes the same comparison and our numbers reproduced it to the
+decimal, which is why it passed a check. Reproducing a number is not validating the
+inference drawn from it - the raw page keeps his claim verbatim, this page carries
+the correction.

@@ -43,28 +43,44 @@ No variant of its formula is distinguishable from another at 58 studies - the
 Hanley-McNeil resolution is 0.191 and the whole spread across seven variants is
 0.055. Tuning it further is overfitting. See [[E006-synovitis-fill]].
 
-## The silence problem is not only Synovitis - measured on our own lexicon
+## Synovitis is the only label where the report really under-calls
 
-Our extractor against gold prevalence on the 58, all 4,407 reports scanned:
+**Corrected 2026-10-02.** An earlier version of this page claimed Fracture was a
+second silence problem, on the grounds that reports call fracture in 7.1% of studies
+while 31% of gold studies are fracture-positive - a 4.4x gap. **That comparison is
+invalid and the conclusion from it was wrong.**
 
-| finding | report says POSITIVE | report mentions at all | gold positive |
+The 7.1% is the rate over all 4,407 studies. The 31% is the rate over the 58 gold
+studies, which are trauma-enriched: our extractor calls fracture on 6.7% of non-gold
+studies and **36.2%** of gold ones, a **5.4x enrichment**. The gap was almost
+entirely the sampling of the gold set. gchauhan's forum post makes the same
+comparison and our numbers reproduced it exactly, which is why it survived a check -
+**reproducing a number is not validating the inference drawn from it.**
+
+Compared like with like, on the same 58 studies:
+
+| finding | report says POSITIVE (on the 58) | gold positive | direction |
 |---|---|---|---|
-| Fracture | **7.1%** | 20.1% | **31%** |
-| Synovitis | 12.4% | 12.8% | **47%** |
-| Effusion | 58.5% | 85.7% | 60% |
+| **Synovitis** | **29.3%** | **46.6%** | **under-calls, 1.6x** |
+| Lateral Meniscus | 43.1% | 39.7% | slight over-call |
+| Medial OA | 27.6% | 25.9% | slight over-call |
+| Fracture | 36.2% | 31.0% | **over-calls** |
+| Contusion | 56.9% | 32.8% | over-calls 1.7x |
+| Effusion | 84.5% | 60.3% | over-calls 1.4x |
 
-Fracture is the second silence problem and nobody has worked on it. Reports call it
-in 7.1% of studies while radiologists reading the images call it in 31% - a 4.4x
-gap. [Certain, ours] This independently reproduces gchauhan's forum figure of "7% of
-reports but 31% of expert labels" to the decimal, which is a good check on both.
+**Synovitis is the only one of the twelve that under-calls.** Everything else
+over-calls, consistent with the lexicon's known bias - 77% cell agreement, 136 false
+positives against 24 false negatives. That is why the targeted Synovitis fill pays
+and a blanket one does not.
 
-Effusion is the opposite case and the reason the backoff works: reports discuss it
-85.7% of the time and call it 58.5%, against 60% gold. The report is a reliable
-witness for effusion and an unreliable one for synovitis and fracture.
+Fracture's silence is also informative rather than uninformative:
+P(gold+ | report silent) = **0.16** against P(gold+ | report speaks) = **0.50**, with
+a base rate of 0.31. By the rule below, that makes Fracture a *worse* imputation
+candidate than Synovitis, not a better one. Its gold AUC is already 0.8326. [Certain]
 
-dreaddevelopment's audit adds the mechanism: **12 of 27 expert-positive Synovitis
-studies had no explicit Synovitis statement at all.** The label is not recoverable
-from those reports by any extractor.
+dreaddevelopment's audit gives the mechanism for the one real case: **12 of 27
+expert-positive Synovitis studies had no explicit Synovitis statement at all.** That
+label is not recoverable from those reports by any extractor.
 
 ## Rule
 
