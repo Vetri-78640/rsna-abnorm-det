@@ -46,7 +46,7 @@ what the question needs. `[[name]]` links refer to the page file of that name.
 - [E001-lexicon-patch](experiments/E001-lexicon-patch.md) - Hypothesis: fixing three lexicon bugs raises gold AUC on the OA labels.
 - [E002-study-major-loop](experiments/E002-study-major-loop.md) - Hypothesis: the 0.939 notebook decodes each study 4x; reordering removes the waste with no accuracy change.
 - [E003-encode-and-gate](experiments/E003-encode-and-gate.md) **[in-progress]** - Measures whether label quality is worth anything on this data, by caching encoder features once and training the head under several label sets.
-- [E004-submissions](experiments/E004-submissions.md) - Our best public score is 0.941, but the field inflated so fast that it fell from rank 193 to 812 in twelve days without regressing.
+- [E004-submissions](experiments/E004-submissions.md) - Our best public score is 0.943 and it places us 533 of 4,783, because 749 teams are tied at exactly 0.943.
 - [E005-control-and-ablation](experiments/E005-control-and-ablation.md) **[in-progress]** - The training pipeline that did not exist before.
 - [E006-synovitis-fill](experiments/E006-synovitis-fill.md) - The targeted fill that the forum reported as worth +0.0093 is already in our lexicon as FEATURES['synovitis_backoff'], on by default.
 

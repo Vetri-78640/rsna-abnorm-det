@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-09-22
+updated: 2026-10-02
 status: open
 sources: [this project]
 ---
@@ -15,7 +15,7 @@ Close a question by moving its answer onto the right page and deleting the row.
 | 1 | Does our slice selection beat the public one on our CV? | whether [[D001-train-not-just-blend]] survives | issue #6 |
 | 2 | Does the image model far exceed the label extractor on the gold 58? | how much week 3 is worth; see [[label-premise]] | issue #1 |
 | 3 | Is `AMP_PREF='auto'` score-neutral on the 0.943 notebook? | a 4.72x speedup on Family A | issue #5 |
-| 4 | What did the pending 2026-09-22 submission score? | our baseline | `kaggle competitions submissions` |
+| ~~4~~ | ~~Pending 2026-09-22 submission?~~ **Closed.** 0.943, now our standing score; rank 533 of 4,783. | our baseline | done, see [[E004-submissions]] |
 | 5 | Does a competition rerun spend the 30 h/week GPU quota? | how freely we can submit | watch the quota meter across one submission |
 | 6 | What is the layout of `extra_vols.npy`? | whether 3,030 or 2,200 studies skip decoding | load one row on Kaggle |
 | 7 | How many series does the fluid flag misfile? (one T2 confirmed so far) | a slot every public solution misfiles | `notebooks/header_census.ipynb`, CPU only |

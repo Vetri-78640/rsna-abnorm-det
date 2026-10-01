@@ -10,15 +10,18 @@ PF OA, Effusion, Synovitis, Baker's, Contusion, Fracture.
 
 ## Where this stands
 
-**Rank 193 of 3,434, score 0.940**, on the public 0.939 notebook. Top is 0.954,
-prize money starts at 0.950. Public notebooks cap around 0.942, so we are at the
-public ceiling and the rest is private work.
+**Rank 533 of 4,783, score 0.943** (2026-10-01). Top is 0.961, prize money starts
+at 0.950 which is now rank 79. We are on the public-notebook plateau: **749 teams
+display 0.943**, filling ranks 291 to 1,039, so 16% of the field is inside one
+thousandth of AUC. That cuts both ways - we are indistinguishable from 748 other
+teams, and **+0.001 is worth about 750 places.**
 
 The plan and the reasoning behind it are in **`wiki/archive/STRATEGY.md`**. In short:
 
-- The top-5 spread is 0.003, inside one standard error on this test set. The
-  leaders have 42-119 submissions against our 3, so part of their margin is
-  public-LB overfit. **Select finals by CV, never by public LB.**
+- The top-10 spread is 0.004, inside one standard error on this test set. The
+  leaders have 16-287 submissions (median 117) against our 8. Part of their margin
+  is public-LB overfit, but the team that reached the top 20 on 16 submissions
+  shows it is not all of it. **Select finals by CV, never by public LB.**
 - Retraining turned out to be affordable after all: at 224 px the whole visual
   input is 11.12 GiB and one fold is 76 minutes, so a 5-fold experiment is 6.5 h.
 - The largest measured lever in the whole competition is **crop geometry and
@@ -31,9 +34,11 @@ and blend it into the public pack as a genuinely decorrelated member. The pack i
 highly correlated with itself - one of its four arms is another arm's checkpoint
 with the slice triplet reversed.
 
-Honest expectation: **0.944 to 0.947, rank 30 to 60.** The route into the top ten
-is arriving there with no public-LB overfit while part of the leading group
-regresses on private.
+Honest expectation: **0.944 to 0.947, which is now rank 233 to 120** - not the
+"rank 30 to 60" this file claimed against the September board. The top ten needs
+0.957. The route there is arriving with no public-LB overfit while part of the
+leading group regresses on private, and that is a bet on their overfit, not a
+plan. See `wiki/experiments/E004-submissions.md` for the full rank table.
 
 ## The original premise, and how it has held up
 
