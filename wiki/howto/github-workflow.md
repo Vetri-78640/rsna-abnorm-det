@@ -11,7 +11,8 @@ Work is tracked as one issue per task, grouped into four dated milestones, with 
 branch and one PR per issue that closes it.
 
 Repo: `Vetri-78640/rsna-abnorm-det`. Visibility is an open decision, see
-[[D005-repo-visibility]].
+[[D005-repo-visibility]]. A new contributor starts at [[onboarding]], not here -
+a fresh clone carries no labels and no data by design.
 
 ## Milestones
 
