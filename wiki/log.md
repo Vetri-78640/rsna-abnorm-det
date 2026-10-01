@@ -205,3 +205,8 @@ which points at slice selection rather than labels.
 New: wiki/concepts/validation-protocol.md, wiki/decisions/D006-validate-on-cv-not-gold58.md.
 Open question 13 added (does a simple CNN at 224 px really reach 0.94+). Overview
 rewritten against the 2026-10-01 board.
+
+## [2026-10-02] docs | carry D006 into CLAUDE.md
+CLAUDE.md said "select finals by CV" without saying what CV is computed against,
+which is the half that was wrong. Added the +0.003 threshold, report labels over all
+4,407 studies, and src/folds.py rather than KFold.
