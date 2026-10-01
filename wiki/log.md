@@ -169,3 +169,15 @@ gold AUC against a Hanley-McNeil resolution of 0.191, so none of them is
 distinguishable and tuning is overfitting 41 gold cells. Pinned by
 tests/test_synovitis_backoff.py, which fails 5 of 7 if the block is deleted.
 Closed as already done, not as worth doing.
+
+## [2026-10-02] measure | leaderboard re-pull, we are 533 of 4,783
+Closes open question 4: the pending 2026-09-22 submission scored 0.943, and two
+more 0.943 runs followed on 09-28 and 09-29. Eight submissions total, not the three
+the README claimed. Team `a`, members cosmicmap/imvetri0/kaori02.
+The board moved a long way: 4,783 teams, top 0.961, and 0.950 is now rank 79.
+749 teams display 0.943, filling ranks 291 to 1,039 - but they are not tied, the
+CSV rounds to three decimals while Kaggle ranks on full precision (verified: rank
+order inside the band does not follow submission date, the usual tie-break). So 16%
+of the field sits inside one thousandth of AUC and +0.001 is worth about 750 places.
+Corrected the README's "0.944 to 0.947, rank 30 to 60": that range is now rank 233
+to 120, and the top ten needs 0.957.
